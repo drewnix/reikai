@@ -20,48 +20,48 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/drewnix/reikai/cmd/reikai/server"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	log "k8s.io/klog/v2"
 )
 
-var cfgFile string
+var (
+	cfgFile string
+	// serveOpts server.ServeOptions
+	version = "devel"
+)
 
 // rootCmd represents the base command when called without any subcommands
-var rootCmd = &cobra.Command{
-	Use:   "reikai",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
+var rootCmd *cobra.Command
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	// Run: func(cmd *cobra.Command, args []string) { },
+// rootCmd represents the base command when called without any subcommands
+func newRootCmd() *cobra.Command {
+	return &cobra.Command{
+		Use:   "reikai",
+		Short: "Reikai is a micro-service that creates an API endpoint for controlling the spirit world.",
+		PreRun: func(cmd *cobra.Command, args []string) {
+			// serveOpts.UserAgent = getUserAgent(version, serveOpts.UserAgentComment)
+			// log.Infof("kubeops has been configured with: %#v", serveOpts)
+			log.Infof("reikai has been configured")
+		},
+		RunE: func(cmd *cobra.Command, args []string) error {
+			return server.Serve()
+		},
+		Version: "devel",
+	}
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
-	err := rootCmd.Execute()
-	if err != nil {
-		os.Exit(1)
-	}
+	cobra.CheckErr(rootCmd.Execute())
 }
 
 func init() {
 	cobra.OnInitialize(initConfig)
-
-	// Here you will define your flags and configuration settings.
-	// Cobra supports persistent flags, which, if defined here,
-	// will be global for your application.
-
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.reikai.yaml)")
-
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd = newRootCmd()
+	rootCmd.SetVersionTemplate(version)
 }
 
 // initConfig reads in config file and ENV variables if set.
