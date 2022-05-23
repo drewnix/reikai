@@ -1,0 +1,5 @@
+*.*~
+devel/*
+
+# OSX
+.DS_Store
