@@ -1,4 +1,5 @@
-![reikai logo](https://user-images.githubusercontent.com/293335/169912048-dc0c3c9d-3848-4a64-85e8-87c617f58e04.png)
+<img src="https://user-images.githubusercontent.com/293335/169912048-dc0c3c9d-3848-4a64-85e8-87c617f58e04.png" width="300" style="display: block; margin-right: auto; margin-left: auto;">
+
 
 # Reikai
 
