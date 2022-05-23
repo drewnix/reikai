@@ -9,5 +9,7 @@ IMG_MODIFIER ?=
 
 default: all
 
-all: 
-	$(GO) run main.go
+reikai/%:
+	DOCKER_BUILDKIT=1 docker build -t reikai/$*$(IMG_MODIFIER):$(IMAGE_TAG) --build-arg "VERSION=${VERSION}" -f cmd/$*/Dockerfile .
+
+all: reikai/reikai

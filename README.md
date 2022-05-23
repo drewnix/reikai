@@ -15,8 +15,10 @@ As a medium, this project seeks to communicate with the spirit realm that lives 
 * [X]   Incorporate a simple command line interface using Cobra
 * [X]   Create a REST API server using Gorilla Mux
 * [X]   Implement live & ready routes
-* [ ]   Setup docker build
+* [ ]   Setup docker build for API
+* [ ]   Create a test case for REST API
 * [ ]   Create a dashboard
 * [ ]   Create a dashboard component which displays output from the REST API.
+* [ ]   Setup docker build for dashboard
 * [ ]   Create a POC interface to kOps or kubernetes
 * [ ]   Create a helm chart and installer for k8s
