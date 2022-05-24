@@ -1,5 +1,5 @@
 
-IMPORT_PATH:= github.com/vmware-tanzu/kubeapps
+IMPORT_PATH:= github.com/drewnix/reikai
 GO = /usr/bin/env go
 GOFMT = /usr/bin/env gofmt
 IMAGE_TAG ?= dev-$(shell date +%FT%H-%M-%S-%Z)
