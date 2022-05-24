@@ -1,5 +1,5 @@
 
-IMPORT_PATH:= github.com/vmware-tanzu/kubeapps
+IMPORT_PATH:= github.com/drewnix/reikai
 GO = /usr/bin/env go
 GOFMT = /usr/bin/env gofmt
 IMAGE_TAG ?= dev-$(shell date +%FT%H-%M-%S-%Z)
@@ -9,5 +9,7 @@ IMG_MODIFIER ?=
 
 default: all
 
-all: 
-	$(GO) run main.go
+reikai/%:
+	DOCKER_BUILDKIT=1 docker build -t reikai/$*$(IMG_MODIFIER):$(IMAGE_TAG) --build-arg "VERSION=${VERSION}" -f cmd/$*/Dockerfile .
+
+all: reikai/reikai
