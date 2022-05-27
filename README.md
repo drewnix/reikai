@@ -16,9 +16,13 @@ As a medium, this project seeks to communicate with the spirit realm that lives 
 * [X]   Create a REST API server using Gorilla Mux
 * [X]   Implement live & ready routes
 * [X]   Setup docker build for API
-* [ ]   Create a test case for REST API
-* [ ]   Create a dashboard
+* [X]   Create a dashboard
+    * [X]   Initialize yarn + react + typescript + antd
+    * [X]   Setup docker build for dashboard
+* [ ]   Create test case(s) for REST API
 * [ ]   Create a dashboard component which displays output from the REST API.
-* [ ]   Setup docker build for dashboard
+* [ ]   Create login functionality for dashboard
+* [ ]   Create clusters component for dashboard
 * [ ]   Create a POC interface to kOps or kubernetes
+* [ ]   Create CI pipeline
 * [ ]   Create a helm chart and installer for k8s

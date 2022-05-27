@@ -1,0 +1,12 @@
+FROM node:18.2
+
+WORKDIR /usr/src/app/
+USER root
+COPY package.json ./
+RUN yarn
+
+COPY ./ ./
+
+RUN yarn run test:e2e
+
+CMD ["yarn", "start"]
